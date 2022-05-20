@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>Calculadora</title>
+</head>
+<style>
+    body{
+        background-color: rgb(8, 16, 43);
+        
+        
+
+    }
+    section#calculadora{
+        font-family:'Courier New', Courier, monospace;
+        color: white;
+        width: 350px;
+        height: 400px;
+        margin: auto;
+        background-color: rgb(32, 42, 80);
+
+    }
+
+    h1{
+        padding-top: 10px;
+        margin-left: 31px;
+        color: white;
+        line-height: 30px;
+    }
+
+    span#resetar{
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        margin-left: 100px;
+        background-color: rgb(125, 135, 172, 50%);
+        border: 2px solid rgb(125, 135, 172, 20%);
+        border-radius: 2px;
+        position: absolute;
+        
+
+    }
+
+    span#resetar:hover{
+        background-color: rgb(44, 56, 99);
+        border: 2px solid rgb(44, 56, 99);
+        border-radius: 2px;
+             
+        cursor: pointer;
+    }
+    
+
+    #display{
+        width: 288px;
+        height: 50px;
+        margin-left: 31px;
+        background-color: rgb(44, 56, 99);
+        margin-bottom: 5px;
+        color: white;
+    }
+    #botoes{
+        margin-left: 22px ;
+
+    }
+   
+    input{
+        font-family:'Courier New', Courier, monospace;
+        color: white;
+        
+        width: 74px;
+        height: 50px;
+        
+        margin: 0;
+        margin-top: 5px;
+        font-size: 20pt;
+       
+        background-color: rgb(125, 135, 172, 50%);
+        border: 2px solid rgb(125, 135, 172, 20%);
+        border-radius: 2px;
+        
+    
+    }
+
+    input:hover{
+        
+        background-color: rgb(44, 56, 99);
+        border: 2px solid rgb(44, 56, 99);
+        border-radius: 2px;
+        font-size: 22pt;
+       
+        cursor: pointer;
+        
+        
+    }
+
+    input#igual{
+        width: 60px;
+        height: 220px;
+        position: absolute;
+        margin-left: 10px;
+        margin-bottom: 100px;
+        font-weight: bold;
+    }
+
+
+</style>
+<body>
+    <section id="calculadora">
+        <h1>
+            Calculadora
+            <span class="material-icons" id="resetar">
+                replay
+                </span>
+        </h1>
+        
+        
+        
+        <div id="display">
+            <p id="write_display"> 0</p>
+        </div>
+        <div id="botoes">
+            <input type="button" value="7" onclick="clickNumber('7')">
+            <input type="button" value="8" onclick="clickNumber('8')">
+            <input type="button" value="9" onclick="clickNumber('9')">
+            <input type="button" id="igual" value="=" onclick="clickNumber(' = ')">
+            <br>
+            <input type="button" value="4" onclick="clickNumber('4')">
+            <input type="button" value="5" onclick="clickNumber('5')">
+            <input type="button" value="6" onclick="clickNumber('6')">
+            <br>
+            <input type="button" value="1" onclick="clickNumber('1')">
+            <input type="button" value="2" onclick="clickNumber('2')">
+            <input type="button" value="3" onclick="clickNumber('3')">
+            <br>
+            <input type="button" value="." onclick="clickNumber('.')">
+            <input type="button" value="+" onclick="clickNumber(' + ')">
+            <input type="button" value="0" onclick="clickNumber('0')">
+        </div>
+        
+        
+    
+    </section>
+    
+<script>
+ 
+        var display = []
+        var escrever_display = document.getElementById('write_display')
+        var numAtual = 0
+        var soma = 0
+        var result = 0
+        
+
+        
+            function clickNumber(valor = 0){
+
+               // escrever_display.innerText = valor
+
+                display.push(valor)
+                escrever_display.innerText = display.join('') 
+                
+                if(valor == ' + '){
+                    soma = soma + Number(numAtual) 
+                    numAtual = ''
+                    console.log('Somal recebe ' + soma + ' numAtual recebe ' +numAtual)
+
+
+                } else if ( valor == ' = '){
+                    result = soma + Number(numAtual) 
+                    numAtual = ''
+                    soma = 0
+                    display.push = result 
+                    escrever_display.innerText = display.join('') +result
+                    result = 0
+                    display = []
+
+                } else{                
+                    numAtual = numAtual + valor
+                    console.log('numAtual recebeu valor ' + numAtual)
+                }
+                  
+            
+            }
+       
+</script>
+</body>
+</html>                   

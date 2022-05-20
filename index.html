@@ -154,14 +154,15 @@
         var result = 0
         
         function resetarVar(){
-                display = [0]
+                display = []
                 soma = 0
                 result = 0
                 numAtual = 0
-                escrever_display.innerText = display.join('') 
+                escrever_display.innerText = '0'
         }
         
             function clickNumber(valor = 0){
+                
                 display.push(valor)
                 escrever_display.innerText = display.join('') 
                 

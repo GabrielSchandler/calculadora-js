@@ -112,7 +112,7 @@
     <section id="calculadora">
         <h1>
             Calculadora
-            <span class="material-icons" id="resetar">
+            <span class="material-icons" id="resetar" onclick="resetarVar()">
                 replay
                 </span>
         </h1>
@@ -146,27 +146,28 @@
     </section>
     
 <script>
- 
+        var resetar = document.getElementById('resetar')
         var display = []
         var escrever_display = document.getElementById('write_display')
         var numAtual = 0
         var soma = 0
         var result = 0
         
-
+        function resetarVar(){
+                display = [0]
+                soma = 0
+                result = 0
+                numAtual = 0
+                escrever_display.innerText = display.join('') 
+        }
         
             function clickNumber(valor = 0){
-
-               // escrever_display.innerText = valor
-
                 display.push(valor)
                 escrever_display.innerText = display.join('') 
                 
                 if(valor == ' + '){
                     soma = soma + Number(numAtual) 
                     numAtual = ''
-                    console.log('Somal recebe ' + soma + ' numAtual recebe ' +numAtual)
-
 
                 } else if ( valor == ' = '){
                     result = soma + Number(numAtual) 
@@ -179,12 +180,12 @@
 
                 } else{                
                     numAtual = numAtual + valor
-                    console.log('numAtual recebeu valor ' + numAtual)
+                    
                 }
                   
             
             }
-       
+            
 </script>
 </body>
 </html>                   
